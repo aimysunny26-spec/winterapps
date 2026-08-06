@@ -136,13 +136,29 @@
     </footer>
 
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            if (typeof google !== 'undefined' && google.script && google.script.run) {
-                google.script.run.withSuccessHandler(renderClasses).getSheetData('Classes');
-                google.script.run.withSuccessHandler(renderProducts).getSheetData('Products');
-                google.script.run.withSuccessHandler(renderPosts).getSheetData('Posts');
-            } else {
-                console.log('GAS 환경이 아닌 로컬 테스트 모드입니다.');
+        async function loadSheetData(sheetName) {
+            const response = await fetch(`/api/sheet?name=${encodeURIComponent(sheetName)}`);
+            if (!response.ok) {
+                throw new Error(`Failed to load ${sheetName}`);
+            }
+            return response.json();
+        }
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const classes = await loadSheetData('Classes');
+                renderClasses(classes);
+
+                const products = await loadSheetData('Products');
+                renderProducts(products);
+
+                const posts = await loadSheetData('Posts');
+                renderPosts(posts);
+            } catch (error) {
+                console.error(error);
+                document.getElementById('classesContainer').innerHTML = '<div class="loading-text">데이터를 불러오지 못했습니다.</div>';
+                document.getElementById('productsContainer').innerHTML = '<div class="loading-text">데이터를 불러오지 못했습니다.</div>';
+                document.getElementById('postsContainer').innerHTML = '<div class="loading-text">데이터를 불러오지 못했습니다.</div>';
             }
         });
 
