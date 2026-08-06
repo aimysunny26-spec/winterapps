@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>챙이네공방 - 따뜻한 손뜨개 마켓 & 클래스</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Pretendard:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #FDFBF7;
+            --card-bg: #FFFDF9;
+            --primary-color: #D96B43;
+            --secondary-color: #3B5842;
+            --accent-beige: #E8DFC8;
+            --text-color: #2C2C2C;
+            --text-light: #666666;
+            --font-main: 'Pretendard', sans-serif;
+            --font-heading: 'Gowun Batang', serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.03"><rect width="100" height="100" fill="none"/><path d="M0 10 H100 M0 30 H100 M0 50 H100 M0 70 H100 M0 90 H100 M10 0 V100 M30 0 V100 M50 0 V100 M70 0 V100 M90 0 V100" stroke="%23000" stroke-width="1"/></svg>');
+            color: var(--text-color);
+            font-family: var(--font-main);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        header {
+            background-color: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(5px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px dashed var(--accent-beige);
+        }
+
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+        .logo { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; color: var(--primary-color); text-decoration: none; }
+
+        nav ul { display: flex; list-style: none; gap: 25px; margin: 0; padding: 0; }
+        nav a { text-decoration: none; color: var(--text-color); font-weight: 600; }
+
+        .hero {
+            padding: 70px 0;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(232,223,200,0.3) 0%, rgba(253,251,247,0) 100%);
+            border-bottom: 1px dashed var(--accent-beige);
+        }
+
+        .hero h1 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 15px; }
+
+        section { padding: 50px 0; }
+        .section-title { text-align: center; font-family: var(--font-heading); font-size: 2rem; margin-bottom: 30px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--accent-beige);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .card-img { width: 100%; height: 200px; background-size: cover; background-position: center; background-color: var(--accent-beige); }
+        .card-content { padding: 20px; }
+        .card-tag { display: inline-block; background-color: rgba(217, 107, 67, 0.1); color: var(--primary-color); font-size: 0.75rem; font-weight: 700; padding: 3px 8px; border-radius: 8px; margin-bottom: 8px; }
+        .card-title { font-size: 1.15rem; margin: 0 0 8px 0; font-weight: 700; }
+        .card-desc { font-size: 0.9rem; color: var(--text-light); margin-bottom: 12px; }
+        .card-price { font-weight: 700; color: var(--secondary-color); }
+
+        .loading-text { text-align: center; color: var(--text-light); width: 100%; padding: 20px 0; }
+
+        footer { background-color: var(--accent-beige); padding: 30px 0; margin-top: 50px; text-align: center; font-size: 0.85rem; color: var(--text-light); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="./index.html" class="logo">🧵 챙이네공방</a>
+            <nav>
+                <ul>
+                    <li><a href="#classes">손뜨개수강</a></li>
+                    <li><a href="#shop">쇼핑몰</a></li>
+                    <li><a href="#blog">공방소식</a></li>
+                    <li><a href="doan/index.html">도안 계산기</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>한 땀 한 땀 정성을 담는 공간, 챙이네공방</h1>
+            <p>구글 시트에서 직접 수강목록과 완제품 데이터를 관리하실 수 있습니다.</p>
+        </div>
+    </section>
+
+    <section id="classes" class="container">
+        <h2 class="section-title">손뜨개 수강 안내</h2>
+        <div class="grid" id="classesContainer">
+            <div class="loading-text">📊 구글 시트에서 수강 데이터를 불러오는 중...</div>
+        </div>
+    </section>
+
+    <section id="shop" style="background-color: rgba(232,223,200,0.15);">
+        <div class="container">
+            <h2 class="section-title">완제품 & 실·부자재 마켓</h2>
+            <div class="grid" id="productsContainer">
+                <div class="loading-text">📊 구글 시트에서 상품 데이터를 불러오는 중...</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="container">
+        <h2 class="section-title">공방 소식</h2>
+        <div class="grid" id="postsContainer">
+            <div class="loading-text">📊 구글 시트에서 게시글을 불러오는 중...</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><strong>챙이네공방</strong> | 구글 시트 실시간 데이터 연동 완료</p>
+            <p>© 챙이네공방. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            if (typeof google !== 'undefined' && google.script && google.script.run) {
+                google.script.run.withSuccessHandler(renderClasses).getSheetData('Classes');
+                google.script.run.withSuccessHandler(renderProducts).getSheetData('Products');
+                google.script.run.withSuccessHandler(renderPosts).getSheetData('Posts');
+            } else {
+                console.log('GAS 환경이 아닌 로컬 테스트 모드입니다.');
+            }
+        });
+
+        function renderClasses(data) {
+            const container = document.getElementById('classesContainer');
+            if (!data || data.length === 0) {
+                container.innerHTML = '<div class="loading-text">등록된 수강 안내가 없습니다.</div>';
+                return;
+            }
+            container.innerHTML = data.map(item => `
+                <div class="card">
+                    <div class="card-img" style="background-image: url('${item.imageUrl}');"></div>
+                    <div class="card-content">
+                        <span class="card-tag">${item.category}</span>
+                        <h3 class="card-title">${item.title}</h3>
+                        <p class="card-desc">${item.desc}</p>
+                        <div class="card-price">${item.price}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderProducts(data) {
+            const container = document.getElementById('productsContainer');
+            if (!data || data.length === 0) {
+                container.innerHTML = '<div class="loading-text">등록된 상품이 없습니다.</div>';
+                return;
+            }
+            container.innerHTML = data.map(item => `
+                <div class="card">
+                    <div class="card-img" style="background-image: url('${item.imageUrl}');"></div>
+                    <div class="card-content">
+                        <span class="card-tag" style="background-color: rgba(59,88,66,0.1); color: var(--secondary-color);">${item.category}</span>
+                        <h3 class="card-title">${item.title}</h3>
+                        <p class="card-desc">${item.desc}</p>
+                        <div class="card-price">${item.price}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderPosts(data) {
+            const container = document.getElementById('postsContainer');
+            if (!data || data.length === 0) {
+                container.innerHTML = '<div class="loading-text">등록된 게시글이 없습니다.</div>';
+                return;
+            }
+            container.innerHTML = data.map(item => `
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-tag">${item.category}</span>
+                        <h3 class="card-title">${item.title}</h3>
+                        <p class="card-desc">${item.content}</p>
+                        <small style="color: var(--text-light);">${item.date} | 작성자: ${item.author}</small>
+                    </div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>
